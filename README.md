@@ -36,6 +36,6 @@ Based on this article by Kunal Tanwar - [Let's change VS Code UI font!](https://
 
 ## Release Notes
 
-### 0.0.1
+### v0.0.1
 
 Initial release
