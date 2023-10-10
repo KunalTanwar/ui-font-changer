@@ -15,12 +15,8 @@ function createBackup(filePath) {
 function restoreFromBackup(filePath) {
     const backupPath = `${filePath}.backup`;
 
-    if (fs.existsSync(backupPath)) {
         fs.copyFileSync(backupPath, filePath);
-        vscode.window.showInformationMessage(`Settings restored from ${backupPath}. Close and reopen VS Code to see changes.`);
-    } else {
-        vscode.window.showErrorMessage(`No backup found for ${filePath}`);
-    }
+        vscode.window.showInformationMessage(`System fonts restored, Restart VS Code to see changes.`);
 }
 
 function activate(context) {
@@ -85,7 +81,7 @@ function activate(context) {
             }
 
             fs.writeFileSync(markdownCssPath, modifiedMarkdownCssContent, 'utf-8');
-            vscode.window.showInformationMessage('Font changed, close and reopen VS Code to see changes');
+            vscode.window.showInformationMessage('Font changed, Restart VS Code to see changes');
         }
     });
 
@@ -94,8 +90,6 @@ function activate(context) {
         restoreFromBackup(workbenchCssPath);
         restoreFromBackup(workbenchJsPath);
         restoreFromBackup(markdownCssPath);
-
-
     });
     context.subscriptions.push(modifyDisposable, restoreDisposable);
 }
