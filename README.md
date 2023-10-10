@@ -33,9 +33,3 @@ Based on this article by Kunal Tanwar - [Let's change VS Code UI font!](https://
 
 - I guess it needs Node.js to run, but I don't really know.
 - Written specifically for Windows.
-
-## Release Notes
-
-### v0.0.1
-
-Initial release
