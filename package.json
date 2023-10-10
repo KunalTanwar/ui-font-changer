@@ -1,0 +1,43 @@
+{
+  "name": "ui-font-changer",
+  "displayName": "UI Font Changer",
+  "description": "Change the UI font of VS Code to any installed font on your PC",
+  "version": "0.0.1",
+  "publisher": "everythingsucks",
+  "repository": "",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ui-font-changer.modifyFiles",
+        "title": "UI Font Changer - Change UI font"
+      },
+      {
+        "command": "ui-font-changer.restoreSettings",
+        "title": "UI Font Changer - Restore system settings"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.83.0",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "18.x",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2",
+    "@vscode/test-electron": "^2.3.4"
+  }
+}
