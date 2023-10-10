@@ -25,7 +25,6 @@
       }
     ]
   },
-  "os": ["win"],
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
