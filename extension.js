@@ -9,14 +9,17 @@ const markdownCssPath = path.join(appRoot, 'extensions', 'markdown-language-feat
 
 function createBackup(filePath) {
     const backupPath = `${filePath}.backup`;
-    fs.copyFileSync(filePath, backupPath);
+
+    // Check if a backup file already exists
+    if (!fs.existsSync(backupPath)) {
+        fs.copyFileSync(filePath, backupPath);
+    }
 }
 
 function restoreFromBackup(filePath) {
     const backupPath = `${filePath}.backup`;
-
-        fs.copyFileSync(backupPath, filePath);
-        vscode.window.showInformationMessage(`System fonts restored, Restart VS Code to see changes.`);
+    fs.copyFileSync(backupPath, filePath);
+    vscode.window.showInformationMessage(`Settings restored, Restart VS Code to see changes.`);
 }
 
 function activate(context) {
@@ -24,7 +27,7 @@ function activate(context) {
     const restoreSystem = 'ui-font-changer.restoreSettings';
 
     const modifyDisposable = vscode.commands.registerCommand(changeFont, async () => {
-        // Create backups before making changes
+
         createBackup(workbenchCssPath);
         createBackup(workbenchJsPath);
         createBackup(markdownCssPath);
@@ -60,9 +63,7 @@ function activate(context) {
 
             // Update markdown.css file
             const markdownCssFileContent = fs.readFileSync(markdownCssPath, 'utf-8');
-
             let modifiedMarkdownCssContent = markdownCssFileContent;
-
 
             // Check if --markdown-font-family is present
             if (markdownCssFileContent.includes('--markdown-font-family')) {
@@ -90,9 +91,10 @@ function activate(context) {
         restoreFromBackup(workbenchCssPath);
         restoreFromBackup(workbenchJsPath);
         restoreFromBackup(markdownCssPath);
+        vscode.window.showInformationMessage('System fonts restored, restart VS Code to see changes');
     });
+
     context.subscriptions.push(modifyDisposable, restoreDisposable);
 }
-
 
 exports.activate = activate;
