@@ -19,8 +19,12 @@ function createBackup(filePath) {
 
 function restoreFromBackup(filePath) {
     const backupPath = `${filePath}.backup`;
+    if (fs.existsSync(backupPath)) {
     fs.copyFileSync(backupPath, filePath);
     vscode.window.showInformationMessage(`Settings restored, Restart VS Code to see changes.`);
+    } else {
+        vscode.window.showInformationMessage(`Backup files not found`);
+    }
 }
 
 function activate(context) {

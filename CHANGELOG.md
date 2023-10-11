@@ -1,5 +1,8 @@
 # Change Log
 
+### v0.0.8
+- Added checks while restoring backup
+
 ### v0.0.7
 - Cosmetic changes
 
