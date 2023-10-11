@@ -14,7 +14,7 @@ Based on this article by Kunal Tanwar - [Let's change VS Code UI font!](https://
 
 ## Features
 
-- Change the UI font, Markdown preview font and the context menu font
+- Change the UI font, Markdown preview font, Extension marketplace font and the context menu font
 - Create a backup of your system default fonts
 - Restore default fonts
 
@@ -53,6 +53,9 @@ Click on the gear icon and ingore it -
 
 ### Markdown preview
 <img src="images/Markdown Preview.png" alt="markdown preview" style="width: 500px; border-radius: 5px">
+
+### Extension marketplace
+<img src="images/Marketplace.png" alt="extension marketplace" style="width: 500px; border-radius: 5px">
 
 ### Context menu
 <img src="images/Context Menu.png" alt="context menu" style="width: 400px; border-radius: 5px">
