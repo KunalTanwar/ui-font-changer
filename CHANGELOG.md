@@ -1,5 +1,8 @@
 # Change Log
 
+### v0.0.7
+- Cosmetic changes
+
 ### v0.0.6
 - New feature - Font change also applies to the extension marketplace
 
