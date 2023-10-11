@@ -7,6 +7,7 @@ const workbenchCssPath = path.join(appRoot, 'out', 'vs', 'workbench', 'workbench
 const workbenchJsPath = path.join(appRoot, 'out', 'vs', 'workbench', 'workbench.desktop.main.js');
 const markdownCssPath = path.join(appRoot, 'extensions', 'markdown-language-features', 'media', 'markdown.css');
 
+
 function createBackup(filePath) {
     const backupPath = `${filePath}.backup`;
 
@@ -61,6 +62,14 @@ function activate(context) {
 
             fs.writeFileSync(workbenchJsPath, modifiedJsContent, 'utf-8');
 
+            const jsFileContents = fs.readFileSync(workbenchJsPath, 'utf-8');
+            const updatedJsContent = jsFileContents.replace(/e\.\$_pb=I\.\$i\?["']([^"']*)["']/g, (match, fontFamilies) => {
+            const fontArray = fontFamilies.split(',').map(font => font.trim());
+            fontArray[0] = `"${fontName}"`;
+            return `e.$_pb=I.$i?'${fontArray.join(', ')}, "`;
+            });
+
+            fs.writeFileSync(workbenchJsPath, updatedJsContent, 'utf-8');
             // Update markdown.css file
             const markdownCssFileContent = fs.readFileSync(markdownCssPath, 'utf-8');
             let modifiedMarkdownCssContent = markdownCssFileContent;
