@@ -59,3 +59,7 @@ Click on the gear icon and ingore it -
 
 ### Context menu
 <img src="images/Context Menu.png" alt="context menu" style="width: 400px; border-radius: 5px">
+
+### Download
+
+[<img alt="Get it on VS Code" width="400px" src="./images/marketplace_logo.png">](https://marketplace.visualstudio.com/items?itemName=everythingsucks.ui-font-changer)
