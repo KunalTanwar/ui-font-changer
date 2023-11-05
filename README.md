@@ -54,9 +54,6 @@ Click on the gear icon and ingore it -
 ### Markdown preview
 <img src="images/Markdown Preview.png" alt="markdown preview" style="width: 500px; border-radius: 5px">
 
-### Extension marketplace
-<img src="images/Marketplace.png" alt="extension marketplace" style="width: 500px; border-radius: 5px">
-
 ### Context menu
 <img src="images/Context Menu.png" alt="context menu" style="width: 400px; border-radius: 5px">
 

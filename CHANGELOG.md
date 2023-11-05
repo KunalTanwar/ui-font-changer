@@ -1,5 +1,8 @@
 # Change Log
 
+### v0.0.9
+- Removed "Extension Marketplace" as the content seems to be dynamic
+
 ### v0.0.8
 - Added checks while restoring backup
 

@@ -66,14 +66,15 @@ function activate(context) {
 
             fs.writeFileSync(workbenchJsPath, modifiedJsContent, 'utf-8');
 
-            const jsFileContents = fs.readFileSync(workbenchJsPath, 'utf-8');
-            const updatedJsContent = jsFileContents.replace(/e\.\$_pb=I\.\$i\?["']([^"']*)["']/g, (match, fontFamilies) => {
-            const fontArray = fontFamilies.split(',').map(font => font.trim());
-            fontArray[0] = `"${fontName}"`;
-            return `e.$_pb=I.$i?'${fontArray.join(', ')}, "`;
-            });
+            // const jsFileContents = fs.readFileSync(workbenchJsPath, 'utf-8');
+            // const updatedJsContent = jsFileContents.replace(/e\.\$_Iqb=I[^\W]?\.\$j\?["']([^"']*)["']/g, (match, fontFamilies) => {
+            // const fontArray = fontFamilies.split(',').map(font => font.trim());
+            // fontArray[0] = `"${fontName}"`;
+            // return `e.$_Iqb=I.$j?'${fontArray.join(', ')}, "`;
+            // });
 
-            fs.writeFileSync(workbenchJsPath, updatedJsContent, 'utf-8');
+            // fs.writeFileSync(workbenchJsPath, updatedJsContent, 'utf-8');
+            
             // Update markdown.css file
             const markdownCssFileContent = fs.readFileSync(markdownCssPath, 'utf-8');
             let modifiedMarkdownCssContent = markdownCssFileContent;
