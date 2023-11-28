@@ -2,11 +2,11 @@
 
 This extension changes the font of the entire UI to whatever font you choose.
 
-The font must be installed on your PC.
+> [!NOTE]
+> The font must be installed on your PC.
 
-# ⚠️ Disclaimer
-
-**Written specifically for Windows**
+> [!IMPORTANT]
+> **Written specifically for Windows.**
 
 This extension was written by ChatGPT, I was just debugging and feeding it ideas.
 
