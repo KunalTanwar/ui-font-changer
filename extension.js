@@ -7,23 +7,49 @@ const workbenchCssPath = path.join(appRoot, 'out', 'vs', 'workbench', 'workbench
 const workbenchJsPath = path.join(appRoot, 'out', 'vs', 'workbench', 'workbench.desktop.main.js');
 const markdownCssPath = path.join(appRoot, 'extensions', 'markdown-language-features', 'media', 'markdown.css');
 
+function checkPermissions(filePath) {
+    try {
+        fs.accessSync(filePath, fs.constants.R_OK | fs.constants.W_OK);
+        return true; // User has read and write permissions
+    } catch (error) {
+        console.error(`Error checking permissions for ${filePath}: ${error}`);
+        return false; // User does not have required permissions
+    }
+}
 
-function createBackup(filePath) {
+async function createBackup(filePath) {
     const backupPath = `${filePath}.backup`;
 
     // Check if a backup file already exists
-    if (!fs.existsSync(backupPath)) {
-        fs.copyFileSync(filePath, backupPath);
+    try {
+        if (!fs.existsSync(backupPath)) {
+            /**
+             * Instead of using `fs.copyFileSync`, consider using `fs.createReadStream` and `fs.createWriteStream` for potentially large files. This can help avoid memory issues.
+             */
+            const readStream = fs.createReadStream(filePath);
+            const writeStream = fs.createWriteStream(backupPath);
+
+            if (checkPermissions(filePath)) {
+                await readStream.pipe(writeStream);
+            }
+        }
+    } catch (error) {
+        console.error(`Error in creating backup for ${filePath}: ${error.message}`);
     }
 }
 
 function restoreFromBackup(filePath) {
     const backupPath = `${filePath}.backup`;
-    if (fs.existsSync(backupPath)) {
-    fs.copyFileSync(backupPath, filePath);
-    vscode.window.showInformationMessage(`Settings restored, Restart VS Code to see changes.`);
-    } else {
-        vscode.window.showInformationMessage(`Backup files not found`);
+        
+    try {
+        if (fs.existsSync(backupPath)) {
+            fs.copyFileSync(backupPath, filePath);
+            vscode.window.showInformationMessage(`Settings restored, Restart VS Code to see changes.`);
+        } else {
+            vscode.window.showInformationMessage(`Backup files not found`);
+        }
+    } catch (error) {
+        console.log(`Error restoring from backup for ${filePath}: ${error}`)
     }
 }
 

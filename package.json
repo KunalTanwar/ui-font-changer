@@ -2,12 +2,12 @@
   "name": "ui-font-changer",
   "displayName": "UI Font Changer",
   "description": "Change the UI font of VS Code to any installed font on your PC",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "icon": "images/icon.png",
   "publisher": "everythingsucks",
   "repository": "https://github.com/everythingsucksass/ui-font-changer.git",
   "engines": {
-    "vscode": "^1.83.0"
+    "vscode": "^1.85.1"
   },
   "categories": [
     "Other"
